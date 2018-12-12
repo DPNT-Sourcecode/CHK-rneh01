@@ -62,9 +62,11 @@ public class CheckoutSolution {
 
         total += E_PRICE * eCounter;
 
+        fCounter -= fCounter / 3;
         total += F_PRICE * fCounter;
 
         return total;
     }
 }
+
 
