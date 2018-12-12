@@ -41,8 +41,9 @@ public class CheckoutSolutionTest {
 
     @Test
     public void testCheckoutWithFreeF() {
-        assertThat(checkoutSolution.checkout("FFF"), equalTo(10 + 10));
+        assertThat(checkoutSolution.checkout("BFFFBBF"), equalTo(10 + 10 + 45 + 30 + 10));
     }
 }
+
 
 
