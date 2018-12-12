@@ -44,16 +44,23 @@ public class CheckoutSolution {
         aCounter = aCounter % 5;
         total += AAA_PRICE * (aCounter / 3);
         total += A_PRICE * (aCounter % 3);
+
         bCounter -= eCounter / 2;
-        total += BB_PRICE * (bCounter / 2);
-        total += B_PRICE * (bCounter % 2);
+        if (bCounter > 0) {
+            total += BB_PRICE * (bCounter / 2);
+            total += B_PRICE * (bCounter % 2);
+        }
+
         total += C_PRICE * cCounter;
+
         total += D_PRICE * dCounter;
+
         total += E_PRICE * eCounter;
 
         return total;
     }
 }
+
 
 
 

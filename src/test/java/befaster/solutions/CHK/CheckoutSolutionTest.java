@@ -33,7 +33,13 @@ public class CheckoutSolutionTest {
     public void testCheckoutWithFreeSkus() {
         assertThat(checkoutSolution.checkout("BBEEE"), equalTo(30 + 40 + 40 + 40));
     }
+
+    @Test
+    public void testCheckoutWithFreeSkusButSkuDoesNotExist() {
+        assertThat(checkoutSolution.checkout("EE"), equalTo(40 + 40));
+    }
 }
+
 
 
 
