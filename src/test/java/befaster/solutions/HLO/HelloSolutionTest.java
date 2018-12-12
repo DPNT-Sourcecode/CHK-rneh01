@@ -20,8 +20,14 @@ public class HelloSolutionTest {
     }
 
     @Test
+    public void testHelloWithNullName() {
+        assertThat(helloSolution.hello(null), equalTo("Hello, World!"));
+    }
+
+    @Test
     public void testHelloWithAName() {
         assertThat(helloSolution.hello("John"), equalTo("Hello, John!"));
     }
 }
+
 
