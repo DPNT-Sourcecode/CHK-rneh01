@@ -15,7 +15,7 @@ public class CheckoutSolutionTest {
     }
 
     @Test
-    public void testCheckoutWithValidSkus() {
+    public void testCheckoutWithBasicValidSkus() {
         assertThat(checkoutSolution.checkout("AAABBACDD"), equalTo(130 + 45 + 50 + 20 + 15 + 15));
     }
 
@@ -23,4 +23,10 @@ public class CheckoutSolutionTest {
     public void testCheckoutWithInvalidSkus() {
         assertThat(checkoutSolution.checkout("AEF"), equalTo(-1));
     }
+
+    @Test
+    public void testCheckoutWithExtendedValidSkus() {
+        assertThat(checkoutSolution.checkout("AAABBAAAAACDDE"), equalTo(130 + 45 + 200 + 20 + 15 + 15 + 40));
+    }
 }
+
