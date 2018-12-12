@@ -49,7 +49,7 @@ public class SendCommandToServer {
      *        * Anything really, provided that this file stays runnable.
      *
      **/
-    public static void main(String[] args) throws ConfigNotFoundException {
+    public static void main(String[] args) throws Exception {
         EntryPointMapping entry = new EntryPointMapping();
 
         QueueBasedImplementationRunner runner = new QueueBasedImplementationRunner.Builder()
@@ -67,5 +67,6 @@ public class SendCommandToServer {
     }
 
 }
+
 
 
