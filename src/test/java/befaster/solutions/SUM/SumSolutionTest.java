@@ -25,10 +25,16 @@ public class SumSolutionTest {
         assertThat(sum.compute(50, 99), equalTo(149));
     }
 
-    @Test(expected = Exception.class)
-    public void should_not_compute_sum() throws Exception {
+    @Test(expected = java.lang.Exception.class)
+    public void should_not_compute_when_x_greater_than_99() throws Exception {
         sum.compute(100, 50);
     }
+
+    @Test(expected = java.lang.Exception.class)
+    public void should_not_compute_when_x_less_than_1() throws Exception {
+        sum.compute(0, 50);
+    }
 }
+
 
 
