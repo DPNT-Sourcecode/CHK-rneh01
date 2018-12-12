@@ -32,7 +32,15 @@ public class CheckoutSolution {
             }
         }
 
+        total += AAA_PRICE * aCounter / 3;
+        total += A_PRICE * aCounter % 3;
+        total += BB_PRICE * bCounter / 2;
+        total += B_PRICE * bCounter % 2;
+        total += C_PRICE * cCounter;
+        total += D_PRICE * dCounter;
+
         return total;
     }
 }
+
 
