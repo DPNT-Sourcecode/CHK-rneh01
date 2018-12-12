@@ -34,7 +34,14 @@ public class SumSolutionTest {
     public void should_not_compute_when_x_less_than_1() throws Exception {
         sum.compute(0, 50);
     }
+
+    @Test(expected = java.lang.Exception.class)
+    public void should_not_compute_when_y_greater_than_99() throws Exception {
+        sum.compute(33, 100);
+    }
+
+    @Test(expected = java.lang.Exception.class)
+    public void should_not_compute_when_y_less_than_1() throws Exception {
+        sum.compute(33, 0);
+    }
 }
-
-
-
