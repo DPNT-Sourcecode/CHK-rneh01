@@ -30,7 +30,7 @@ public class EntryPointMapping {
         checkoutSolution = new CheckoutSolution();
     }
 
-    public Object sum(String ... p) {
+    public Object sum(String ... p) throws Exception {
         return sumSolution.compute(asInt(p[0]), asInt(p[1]));
     }
 
@@ -46,3 +46,4 @@ public class EntryPointMapping {
         return checkoutSolution.checkout(p[0]);
     }
 }
+
