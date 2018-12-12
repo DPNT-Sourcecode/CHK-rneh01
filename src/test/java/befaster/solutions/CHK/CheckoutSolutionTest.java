@@ -43,7 +43,13 @@ public class CheckoutSolutionTest {
     public void testCheckoutWithFreeF() {
         assertThat(checkoutSolution.checkout("BFFFBBF"), equalTo(10 + 10 + 45 + 30 + 10));
     }
+
+    @Test
+    public void testCheckoutWithFullSkuRange() {
+        assertThat(checkoutSolution.checkout("GHHHHHIJKLMNNN"), equalTo(20 + 45 + 35 + 60 + 80 + 90 + 40));
+    }
 }
+
 
 
 
