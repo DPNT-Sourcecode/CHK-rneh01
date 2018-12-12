@@ -9,25 +9,24 @@ public class CheckoutSolution {
     private final int BB_PRICE = 45;
 
     public Integer checkout(String skus) {
-        String[] splittedSkus = skus.split(",");
         int aCounter = 0;
         int bCounter = 0;
         int cCounter = 0;
         int dCounter = 0;
         int total = 0;
 
-        for (int i = 0; i < splittedSkus.length; i++) {
-            switch (splittedSkus[i]) {
-                case "A":
+        for (int i = 0; i < skus.length(); i++) {
+            switch (skus.charAt(i)) {
+                case 'A':
                     aCounter++;
                     break;
-                case "B":
+                case 'B':
                     bCounter++;
                     break;
-                case "C":
+                case 'C':
                     cCounter++;
                     break;
-                case "D":
+                case 'D':
                     dCounter++;
                     break;
                 default:
@@ -45,6 +44,7 @@ public class CheckoutSolution {
         return total;
     }
 }
+
 
 
 

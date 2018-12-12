@@ -16,12 +16,13 @@ public class CheckoutSolutionTest {
 
     @Test
     public void testCheckoutWithValidSkus() {
-        assertThat(checkoutSolution.checkout("A,A,A,B,B,C,D,D"), equalTo(130 + 45 + 20 + 15 + 15));
+        assertThat(checkoutSolution.checkout("AAABBCDD"), equalTo(130 + 45 + 20 + 15 + 15));
     }
 
     @Test
     public void testCheckoutWithInvalidSkus() {
-        assertThat(checkoutSolution.checkout("A,E,F"), equalTo(-1));
+        assertThat(checkoutSolution.checkout("AEF"), equalTo(-1));
     }
 }
+
 
