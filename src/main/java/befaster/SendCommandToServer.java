@@ -8,7 +8,7 @@ import tdl.client.runner.ChallengeSession;
 import static befaster.runner.Utils.getConfig;
 import static befaster.runner.Utils.getRunnerConfig;
 
-public class SendCommandToServer {
+public class startSendCommandToServer {
     /**
      * ~~~~~~~~~~ Running the system: ~~~~~~~~~~~~~
      *
@@ -67,3 +67,4 @@ public class SendCommandToServer {
     }
 
 }
+
