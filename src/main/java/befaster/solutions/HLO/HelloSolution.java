@@ -6,6 +6,3 @@ public class HelloSolution {
         return "Hello, World!";
     }
 }
-
-
-

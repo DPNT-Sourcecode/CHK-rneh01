@@ -45,4 +45,3 @@ public class SumSolutionTest {
         sum.compute(33, -1);
     }
 }
-
