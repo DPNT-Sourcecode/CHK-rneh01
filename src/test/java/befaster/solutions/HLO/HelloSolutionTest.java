@@ -15,7 +15,13 @@ public class HelloSolutionTest {
     }
 
     @Test
-    public void testHello() {
+    public void testHelloWithEmptyName() {
         assertThat(helloSolution.hello(""), equalTo("Hello, World!"));
     }
+
+    @Test
+    public void testHelloWithAName() {
+        assertThat(helloSolution.hello("John"), equalTo("Hello, John!"));
+    }
 }
+
