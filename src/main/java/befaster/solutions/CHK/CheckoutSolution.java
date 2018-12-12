@@ -7,6 +7,7 @@ public class CheckoutSolution {
     private final int D_PRICE = 15;
     private final int E_PRICE = 40;
     private final int AAA_PRICE = 130;
+    private final int AAAAA_PRICE = 200;
     private final int BB_PRICE = 45;
 
     public Integer checkout(String skus) {
@@ -39,6 +40,9 @@ public class CheckoutSolution {
             }
         }
 
+        int lotsOf5 = (aCounter / 5);
+        total += AAAAA_PRICE * lotsOf5;
+        aCounter = aCounter % 5;
         total += AAA_PRICE * (aCounter / 3);
         total += A_PRICE * (aCounter % 3);
         total += BB_PRICE * (bCounter / 2);
@@ -50,4 +54,5 @@ public class CheckoutSolution {
         return total;
     }
 }
+
 
