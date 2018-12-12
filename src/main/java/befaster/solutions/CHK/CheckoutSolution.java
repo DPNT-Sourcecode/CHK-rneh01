@@ -5,6 +5,7 @@ public class CheckoutSolution {
     private final int B_PRICE = 30;
     private final int C_PRICE = 20;
     private final int D_PRICE = 15;
+    private final int E_PRICE = 40;
     private final int AAA_PRICE = 130;
     private final int BB_PRICE = 45;
 
@@ -13,6 +14,7 @@ public class CheckoutSolution {
         int bCounter = 0;
         int cCounter = 0;
         int dCounter = 0;
+        int eCounter = 0;
         int total = 0;
 
         for (int i = 0; i < skus.length(); i++) {
@@ -29,6 +31,9 @@ public class CheckoutSolution {
                 case 'D':
                     dCounter++;
                     break;
+                case 'E':
+                    eCounter++;
+                    break;
                 default:
                     return -1;
             }
@@ -40,7 +45,9 @@ public class CheckoutSolution {
         total += B_PRICE * (bCounter % 2);
         total += C_PRICE * cCounter;
         total += D_PRICE * dCounter;
+        total += E_PRICE * eCounter;
 
         return total;
     }
 }
+
