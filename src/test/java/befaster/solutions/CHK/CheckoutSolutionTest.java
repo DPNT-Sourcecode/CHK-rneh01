@@ -21,7 +21,7 @@ public class CheckoutSolutionTest {
 
     @Test
     public void testCheckoutWithInvalidSkus() {
-        assertThat(checkoutSolution.checkout("AEF"), equalTo(-1));
+        assertThat(checkoutSolution.checkout("AEX-"), equalTo(-1));
     }
 
     @Test
@@ -44,4 +44,5 @@ public class CheckoutSolutionTest {
         assertThat(checkoutSolution.checkout("FFF"), equalTo(10 + 10));
     }
 }
+
 
