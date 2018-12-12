@@ -22,26 +22,27 @@ public class SumSolutionTest {
 
     @Test
     public void compute_another_sum() throws Exception {
-        assertThat(sum.compute(50, 99), equalTo(149));
+        assertThat(sum.compute(50, 100), equalTo(150));
     }
 
     @Test(expected = java.lang.Exception.class)
-    public void should_not_compute_when_x_greater_than_99() throws Exception {
-        sum.compute(100, 50);
+    public void should_not_compute_when_x_greater_than_100() throws Exception {
+        sum.compute(101, 50);
     }
 
     @Test(expected = java.lang.Exception.class)
-    public void should_not_compute_when_x_less_than_1() throws Exception {
-        sum.compute(0, 50);
+    public void should_not_compute_when_x_less_than_0() throws Exception {
+        sum.compute(-1, 50);
     }
 
     @Test(expected = java.lang.Exception.class)
-    public void should_not_compute_when_y_greater_than_99() throws Exception {
-        sum.compute(33, 100);
+    public void should_not_compute_when_y_greater_than_100() throws Exception {
+        sum.compute(33, 101);
     }
 
     @Test(expected = java.lang.Exception.class)
-    public void should_not_compute_when_y_less_than_1() throws Exception {
-        sum.compute(33, 0);
+    public void should_not_compute_when_y_less_than_0() throws Exception {
+        sum.compute(33, -1);
     }
 }
+
