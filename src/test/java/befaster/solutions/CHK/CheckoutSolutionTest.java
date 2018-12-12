@@ -45,11 +45,7 @@ public class CheckoutSolutionTest {
     }
 
     @Test
-    public void testCheckoutWithFullSkuRange() {
+    public void testCheckout_betweenSkusGandN() {
         assertThat(checkoutSolution.checkout("GHHHHHIJKLMNNN"), equalTo(20 + 45 + 35 + 60 + 80 + 90 + 40));
     }
 }
-
-
-
-
