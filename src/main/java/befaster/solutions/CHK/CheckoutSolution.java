@@ -27,8 +27,11 @@ public class CheckoutSolution {
                 case "C":
                     cCounter++;
                     break;
-                default:
+                case "D":
                     dCounter++;
+                    break;
+                default:
+                    return -1;
             }
         }
 
@@ -42,5 +45,6 @@ public class CheckoutSolution {
         return total;
     }
 }
+
 
 
