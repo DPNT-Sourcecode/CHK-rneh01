@@ -16,7 +16,8 @@ public class CheckoutSolutionTest {
 
     @Test
     public void testCheckoutWithValidSkus() {
-        assertThat(checkoutSolution.checkout("A,A,A,B,B,C,D"), equalTo(130 + 45 + 20 + 15));
+        assertThat(checkoutSolution.checkout("A,A,A,B,B,C,D,D"), equalTo(130 + 45 + 20 + 15 + 15));
     }
 }
+
 
