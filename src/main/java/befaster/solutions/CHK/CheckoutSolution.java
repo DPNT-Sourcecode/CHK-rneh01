@@ -40,11 +40,11 @@ public class CheckoutSolution {
             }
         }
 
-        int lotsOf5 = (aCounter / 5);
-        total += AAAAA_PRICE * lotsOf5;
+        total += AAAAA_PRICE * (aCounter / 5);
         aCounter = aCounter % 5;
         total += AAA_PRICE * (aCounter / 3);
         total += A_PRICE * (aCounter % 3);
+        bCounter -= eCounter / 2;
         total += BB_PRICE * (bCounter / 2);
         total += B_PRICE * (bCounter % 2);
         total += C_PRICE * cCounter;
@@ -54,5 +54,6 @@ public class CheckoutSolution {
         return total;
     }
 }
+
 
 

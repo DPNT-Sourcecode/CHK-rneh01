@@ -28,6 +28,12 @@ public class CheckoutSolutionTest {
     public void testCheckoutWithExtendedValidSkus() {
         assertThat(checkoutSolution.checkout("AAAABBAAAAACDDE"), equalTo(130 + 50 + 45 + 200 + 20 + 15 + 15 + 40));
     }
+
+    @Test
+    public void testCheckoutWithFreeSkus() {
+        assertThat(checkoutSolution.checkout("BBEEE"), equalTo(30 + 40 + 40 + 40));
+    }
 }
+
 
 
