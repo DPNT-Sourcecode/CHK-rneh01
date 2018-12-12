@@ -24,6 +24,3 @@ public class CheckoutSolutionTest {
         assertThat(checkoutSolution.checkout("AEF"), equalTo(-1));
     }
 }
-
-
-
