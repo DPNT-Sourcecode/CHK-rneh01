@@ -1,8 +1,38 @@
 package befaster.solutions.CHK;
 
 public class CheckoutSolution {
-    public Integer checkout(String skus) {
+    private final int A_PRICE = 50;
+    private final int B_PRICE = 30;
+    private final int C_PRICE = 20;
+    private final int D_PRICE = 15;
+    private final int AAA_PRICE = 130;
+    private final int BB_PRICE = 45;
 
-        return 210;
+    public Integer checkout(String skus) {
+        String[] splittedSkus = skus.split(",");
+        int aCounter = 0;
+        int bCounter = 0;
+        int cCounter = 0;
+        int dCounter = 0;
+        int total = 0;
+
+        for (int i = 0; i < splittedSkus.length; i++) {
+            switch (splittedSkus[i]) {
+                case "A":
+                    aCounter++;
+                    break;
+                case "B":
+                    bCounter++;
+                    break;
+                case "C":
+                    cCounter++;
+                    break;
+                default:
+                    dCounter++;
+            }
+        }
+
+        return total;
     }
 }
+
