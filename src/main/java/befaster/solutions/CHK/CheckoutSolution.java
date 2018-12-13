@@ -98,18 +98,46 @@ public class CheckoutSolution {
             total += INDIVIDUAL_PRICES.get("B") * (counters.get("B") % 2);
         }
 
+        counters.put("F", counters.get("F") - (counters.get("F") / 3));
+        counters.put("M", counters.get("M") - (counters.get("N") / 3));
+
         total += INDIVIDUAL_PRICES.get("C") * counters.get("C");
 
         total += INDIVIDUAL_PRICES.get("D") * counters.get("D");
 
         total += INDIVIDUAL_PRICES.get("E") * counters.get("E");
 
-        counters.put("F", counters.get("F") - (counters.get("F") / 3));
         total += INDIVIDUAL_PRICES.get("F") * counters.get("F");
+
+        total += INDIVIDUAL_PRICES.get("G") * counters.get("G");
+
+        total += TEN_H_PRICE * (counters.get("H") / 10);
+        counters.put("H", counters.get("H") % 10);
+        total += FIVE_H_PRICE * (counters.get("H") / 5);
+        total += INDIVIDUAL_PRICES.get("H") * (counters.get("H") % 5);
+
+        total += INDIVIDUAL_PRICES.get("I") * counters.get("I");
+
+        total += INDIVIDUAL_PRICES.get("J") * counters.get("J");
+
+        total += TWO_K_PRICE * (counters.get("K") / 2);
+        total += INDIVIDUAL_PRICES.get("K") * (counters.get("K") % 2);
+
+        total += INDIVIDUAL_PRICES.get("L") * counters.get("L");
+
+        total += counters.get("M") > 0
+                ? INDIVIDUAL_PRICES.get("M") * counters.get("M")
+                : 0;
+
+        total += INDIVIDUAL_PRICES.get("N") * counters.get("N");
+
+        total += INDIVIDUAL_PRICES.get("O") * counters.get("O");
+
 
         return total;
     }
 }
+
 
 
 
