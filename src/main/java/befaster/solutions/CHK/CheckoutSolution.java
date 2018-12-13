@@ -87,28 +87,29 @@ public class CheckoutSolution {
                 return -1;
         }
 
-        total += AAAAA_PRICE * (aCounter / 5);
-        aCounter = aCounter % 5;
-        total += AAA_PRICE * (aCounter / 3);
-        total += INDIVIDUAL_PRICES.get("A") * (aCounter % 3);
+        total += AAAAA_PRICE * (counters.get("A") / 5);
+        counters.put("A", counters.get("A") % 5);
+        total += AAA_PRICE * (counters.get("A") / 3);
+        total += INDIVIDUAL_PRICES.get("A") * (counters.get("A") % 3);
 
-        bCounter -= eCounter / 2;
-        if (bCounter > 0) {
-            total += BB_PRICE * (bCounter / 2);
-            total += INDIVIDUAL_PRICES.get("B") * (bCounter % 2);
+        counters.put("B", counters.get("B") - (counters.get("E") / 2));
+        if (counters.get("B") > 0) {
+            total += BB_PRICE * (counters.get("B") / 2);
+            total += INDIVIDUAL_PRICES.get("B") * (counters.get("B") % 2);
         }
 
-        total += INDIVIDUAL_PRICES.get("C") * cCounter;
+        total += INDIVIDUAL_PRICES.get("C") * counters.get("C");
 
-        total += INDIVIDUAL_PRICES.get("D") * dCounter;
+        total += INDIVIDUAL_PRICES.get("D") * counters.get("D");
 
-        total += INDIVIDUAL_PRICES.get("E") * eCounter;
+        total += INDIVIDUAL_PRICES.get("E") * counters.get("E");
 
-        fCounter -= fCounter / 3;
-        total += INDIVIDUAL_PRICES.get("F") * fCounter;
+        counters.put("F", counters.get("F") - (counters.get("F") / 3));
+        total += INDIVIDUAL_PRICES.get("F") * counters.get("F");
 
         return total;
     }
 }
+
 
 
