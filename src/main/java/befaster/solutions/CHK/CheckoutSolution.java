@@ -48,65 +48,43 @@ public class CheckoutSolution {
         INDIVIDUAL_PRICES.put("Z", 50);
 
         counters.put("A", 0);
-        counters.put("B", 30);
-        counters.put("C", 20);
-        counters.put("D", 15);
-        counters.put("E", 40);
-        counters.put("F", 10);
-        counters.put("G", 20);
-        INDIVIDUAL_PRICES.put("H", 10);
-        INDIVIDUAL_PRICES.put("I", 35);
-        INDIVIDUAL_PRICES.put("J", 60);
-        INDIVIDUAL_PRICES.put("K", 80);
-        INDIVIDUAL_PRICES.put("L", 90);
-        INDIVIDUAL_PRICES.put("M", 15);
-        INDIVIDUAL_PRICES.put("N", 40);
-        INDIVIDUAL_PRICES.put("O", 10);
-        INDIVIDUAL_PRICES.put("P", 50);
-        INDIVIDUAL_PRICES.put("Q", 30);
-        INDIVIDUAL_PRICES.put("R", 50);
-        INDIVIDUAL_PRICES.put("S", 30);
-        INDIVIDUAL_PRICES.put("T", 20);
-        INDIVIDUAL_PRICES.put("U", 40);
-        INDIVIDUAL_PRICES.put("V", 50);
-        INDIVIDUAL_PRICES.put("W", 20);
-        INDIVIDUAL_PRICES.put("X", 90);
-        INDIVIDUAL_PRICES.put("Y", 10);
-        INDIVIDUAL_PRICES.put("Z", 50);
+        counters.put("B", 0);
+        counters.put("C", 0);
+        counters.put("D", 0);
+        counters.put("E", 0);
+        counters.put("F", 0);
+        counters.put("G", 0);
+        counters.put("H", 0);
+        counters.put("I", 0);
+        counters.put("J", 0);
+        counters.put("K", 0);
+        counters.put("L", 0);
+        counters.put("M", 0);
+        counters.put("N", 0);
+        counters.put("O", 0);
+        counters.put("P", 0);
+        counters.put("Q", 0);
+        counters.put("R", 0);
+        counters.put("S", 0);
+        counters.put("T", 0);
+        counters.put("U", 0);
+        counters.put("V", 0);
+        counters.put("W", 0);
+        counters.put("X", 0);
+        counters.put("Y", 0);
+        counters.put("Z", 0);
     }
 
     public Integer checkout(String skus) {
-        int aCounter = 0;
-        int bCounter = 0;
-        int cCounter = 0;
-        int dCounter = 0;
-        int eCounter = 0;
-        int fCounter = 0;
         int total = 0;
 
         for (int i = 0; i < skus.length(); i++) {
-            switch (skus.charAt(i)) {
-                case 'A':
-                    aCounter++;
-                    break;
-                case 'B':
-                    bCounter++;
-                    break;
-                case 'C':
-                    cCounter++;
-                    break;
-                case 'D':
-                    dCounter++;
-                    break;
-                case 'E':
-                    eCounter++;
-                    break;
-                case 'F':
-                    fCounter++;
-                    break;
-                default:
-                    return -1;
-            }
+            String sku = String.valueOf(skus.charAt(i));
+            Integer counter = counters.get(sku);
+            if (counter != null)
+                counters.put(sku, counter + 1);
+            else
+                return -1;
         }
 
         total += AAAAA_PRICE * (aCounter / 5);
@@ -132,4 +110,5 @@ public class CheckoutSolution {
         return total;
     }
 }
+
 
