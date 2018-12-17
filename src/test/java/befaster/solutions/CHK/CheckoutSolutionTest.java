@@ -48,4 +48,11 @@ public class CheckoutSolutionTest {
     public void testCheckout_betweenSkusGandN() {
         assertThat(checkoutSolution.checkout("GHHHHHIJKLMNNN"), equalTo(20 + 45 + 35 + 60 + 80 + 90 + 40*3));
     }
+
+    @Test
+    public void testCheckout_betweenSkusOandZ() {
+        assertThat(checkoutSolution.checkout("OPPPPPQQQQRRRRSTUUUUVVWXYZ"),
+                equalTo(10 + 200 + 80 + 50*3 + 50 + 30 + 20 + 40*3 + 90 + 20 + 90 + 10 + 50));
+    }
 }
+

@@ -133,7 +133,41 @@ public class CheckoutSolution {
 
         total += INDIVIDUAL_PRICES.get("O") * counters.get("O");
 
+        total += FIVE_P_PRICE * (counters.get("P") / 5);
+        total += INDIVIDUAL_PRICES.get("P") * (counters.get("P") % 5);
+
+        counters.put("Q", counters.get("Q") - (counters.get("R") / 3));
+
+        if (counters.get("Q") > 0) {
+            total += THREE_Q_PRICE * (counters.get("Q") / 3);
+            total += INDIVIDUAL_PRICES.get("Q") * (counters.get("Q") % 3);
+
+        }
+
+        total += INDIVIDUAL_PRICES.get("R") * counters.get("R");
+
+        total += INDIVIDUAL_PRICES.get("S") * counters.get("S");
+
+        total += INDIVIDUAL_PRICES.get("T") * counters.get("T");
+
+        counters.put("U", counters.get("U") - (counters.get("U") / 4));
+
+        total += INDIVIDUAL_PRICES.get("U") * counters.get("U");
+
+        total += THREE_V_PRICE * (counters.get("V") / 3);
+        counters.put("V", counters.get("V") % 3);
+        total += TWO_V_PRICE * (counters.get("V") / 2);
+        total += INDIVIDUAL_PRICES.get("V") * (counters.get("V") % 2);
+
+        total += INDIVIDUAL_PRICES.get("W") * counters.get("W");
+
+        total += INDIVIDUAL_PRICES.get("X") * counters.get("X");
+
+        total += INDIVIDUAL_PRICES.get("Y") * counters.get("Y");
+
+        total += INDIVIDUAL_PRICES.get("Z") * counters.get("Z");
 
         return total;
     }
 }
+
