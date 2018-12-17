@@ -128,33 +128,6 @@ public class CheckoutSolution {
         numPrice = new TreeMap<>();
         numPrice.put(1, 50);
         PRICES.put("Z", numPrice);
-
-        counters.put("A", 0);
-        counters.put("B", 0);
-        counters.put("C", 0);
-        counters.put("D", 0);
-        counters.put("E", 0);
-        counters.put("F", 0);
-        counters.put("G", 0);
-        counters.put("H", 0);
-        counters.put("I", 0);
-        counters.put("J", 0);
-        counters.put("K", 0);
-        counters.put("L", 0);
-        counters.put("M", 0);
-        counters.put("N", 0);
-        counters.put("O", 0);
-        counters.put("P", 0);
-        counters.put("Q", 0);
-        counters.put("R", 0);
-        counters.put("S", 0);
-        counters.put("T", 0);
-        counters.put("U", 0);
-        counters.put("V", 0);
-        counters.put("W", 0);
-        counters.put("X", 0);
-        counters.put("Y", 0);
-        counters.put("Z", 0);
     }
 
     public Integer checkout(String skus) {
@@ -163,18 +136,23 @@ public class CheckoutSolution {
         for (int i = 0; i < skus.length(); i++) {
             String sku = String.valueOf(skus.charAt(i));
             if (PRICES.containsKey(sku)) {
-                int quantity =  counters.get(sku);
+                int quantity =  counters.getOrDefault(sku, 0);
                 counters.put(sku, ++quantity);
-
-                TreeMap<Integer, ?> priceMap = (TreeMap<Integer, ?>) PRICES.get(sku);
-                Object priceObj = priceMap.get(priceMap.lastKey());
-                if (priceObj instanceof String && quantity >= priceMap.lastKey()) {
-                    int discountedQuantity = quantity / priceMap.lastKey();
-                    String discountedSku = (String) priceObj;
-                    counters.put(discountedSku, counters.get(discountedSku) - discountedQuantity);
-                }
             } else {
                 return -1;
+            }
+        }
+
+        for (Map.Entry<String, Integer> skuQuantity: counters.entrySet()) {
+            String sku = skuQuantity.getKey();
+            int quantity = skuQuantity.getValue();
+
+            TreeMap<Integer, ?> priceMap = (TreeMap<Integer, ?>) PRICES.get(sku);
+            Object priceObj = priceMap.get(priceMap.lastKey());
+            if (priceObj instanceof String && quantity >= priceMap.lastKey()) {
+                int discountedQuantity = quantity / priceMap.lastKey();
+                String discountedSku = (String) priceObj;
+                counters.put(discountedSku, counters.getOrDefault(discountedSku, 0) - discountedQuantity);
             }
         }
 
@@ -199,3 +177,4 @@ public class CheckoutSolution {
         return total;
     }
 }
+
