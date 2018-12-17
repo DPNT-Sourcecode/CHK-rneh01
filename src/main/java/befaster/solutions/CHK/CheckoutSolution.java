@@ -131,7 +131,6 @@ public class CheckoutSolution {
     }
 
     public Integer checkout(String skus) {
-        int total = 0;
 
         for (int i = 0; i < skus.length(); i++) {
             String sku = String.valueOf(skus.charAt(i));
@@ -143,19 +142,13 @@ public class CheckoutSolution {
             }
         }
 
-        for (Map.Entry<String, Integer> skuQuantity: counters.entrySet()) {
-            String sku = skuQuantity.getKey();
-            int quantity = skuQuantity.getValue();
+        applyItemReductionOffers();
 
-            TreeMap<Integer, ?> priceMap = (TreeMap<Integer, ?>) PRICES.get(sku);
-            Object priceObj = priceMap.get(priceMap.lastKey());
-            if (priceObj instanceof String && quantity >= priceMap.lastKey()) {
-                int discountedQuantity = quantity / priceMap.lastKey();
-                String discountedSku = (String) priceObj;
-                counters.put(discountedSku, counters.getOrDefault(discountedSku, 0) - discountedQuantity);
-            }
-        }
+        return calculateTotal();
+    }
 
+    private Integer calculateTotal() {
+        int total = 0;
         for (Map.Entry<String, Integer> skuQuantity: counters.entrySet()) {
             String sku = skuQuantity.getKey();
             int quantity = skuQuantity.getValue();
@@ -176,5 +169,21 @@ public class CheckoutSolution {
 
         return total;
     }
+
+    private void applyItemReductionOffers() {
+        for (Map.Entry<String, Integer> skuQuantity: counters.entrySet()) {
+            String sku = skuQuantity.getKey();
+            int quantity = skuQuantity.getValue();
+
+            TreeMap<Integer, ?> priceMap = (TreeMap<Integer, ?>) PRICES.get(sku);
+            Object priceObj = priceMap.get(priceMap.lastKey());
+            if (priceObj instanceof String && quantity >= priceMap.lastKey()) {
+                int discountedQuantity = quantity / priceMap.lastKey();
+                String discountedSku = (String) priceObj;
+                counters.put(discountedSku, counters.getOrDefault(discountedSku, 0) - discountedQuantity);
+            }
+        }
+    }
 }
+
 
