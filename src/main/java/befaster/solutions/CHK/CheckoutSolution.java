@@ -190,7 +190,7 @@ public class CheckoutSolution {
                     int multiBuyPrice = (Integer) priceObj;
                     int multiBuyLots = quantity / multiBuyQuantity;
                     total += multiBuyLots * multiBuyPrice;
-                    quantity = quantity & multiBuyQuantity;
+                    quantity = quantity % multiBuyQuantity;
                 }
             }
         }
@@ -199,4 +199,5 @@ public class CheckoutSolution {
         return total;
     }
 }
+
 
