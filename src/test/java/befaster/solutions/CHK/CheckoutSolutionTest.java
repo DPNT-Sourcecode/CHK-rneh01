@@ -70,4 +70,15 @@ public class CheckoutSolutionTest {
                 + 20 + 45 + 35 + 60 + 80 + 90 + 40*3
                 + 10 + 200 + 80 + 50*3 + 50 + 30 + 20 + 40*3 + 90 + 20 + 90 + 10 + 50));
     }
+
+    @Test
+    public void testCheckout_withB() {
+        assertThat(checkoutSolution.checkout("B"), equalTo(30));
+    }
+
+    @Test
+    public void testCheckout_withBB() {
+        assertThat(checkoutSolution.checkout("BB"), equalTo(45));
+    }
 }
+
