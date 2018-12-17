@@ -154,13 +154,11 @@ public class CheckoutSolution {
             int quantity = skuQuantity.getValue();
 
             TreeMap<Integer, ?> priceMap = (TreeMap<Integer, ?>) PRICES.get(sku);
-            for (Map.Entry<Integer, ?> map: priceMap.descendingMap().entrySet()) {
+            for (Map.Entry<Integer, ?> map : priceMap.descendingMap().entrySet()) {
                 int multiBuyQuantity = map.getKey();
                 Object priceObj = map.getValue();
                 if (priceObj instanceof Integer && quantity >= multiBuyQuantity) {
-                    int multiBuyPrice = (Integer) priceObj;
-                    int multiBuyLots = quantity / multiBuyQuantity;
-                    total += multiBuyLots * multiBuyPrice;
+                    total += quantity / multiBuyQuantity * (Integer) priceObj;
                     quantity = quantity % multiBuyQuantity;
                 }
             }
@@ -171,7 +169,7 @@ public class CheckoutSolution {
     }
 
     private void applyItemReductionOffers() {
-        for (Map.Entry<String, Integer> skuQuantity: counters.entrySet()) {
+        for (Map.Entry<String, Integer> skuQuantity : counters.entrySet()) {
             String sku = skuQuantity.getKey();
             int quantity = skuQuantity.getValue();
 
@@ -180,10 +178,14 @@ public class CheckoutSolution {
             if (priceObj instanceof String && quantity >= priceMap.lastKey()) {
                 int discountedQuantity = quantity / priceMap.lastKey();
                 String discountedSku = (String) priceObj;
-                counters.put(discountedSku, counters.getOrDefault(discountedSku, 0) - discountedQuantity);
+                counters.put(
+                        discountedSku,
+                        counters.getOrDefault(discountedSku, 0) - discountedQuantity
+                );
             }
         }
     }
 }
+
 
 
