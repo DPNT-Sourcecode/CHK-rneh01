@@ -2,50 +2,132 @@ package befaster.solutions.CHK;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class CheckoutSolution {
-    private final Map<String, Integer> INDIVIDUAL_PRICES = new HashMap<>();
+    private final Map<String, Map<Integer, ?>> PRICES = new TreeMap<>();
     private final Map<String, Integer> counters = new HashMap<>();
-
-    private final int AAA_PRICE = 130;
-    private final int AAAAA_PRICE = 200;
-    private final int BB_PRICE = 45;
-    private final int FIVE_H_PRICE = 45;
-    private final int TEN_H_PRICE = 80;
-    private final int TWO_K_PRICE = 150;
-    private final int FIVE_P_PRICE = 200;
-    private final int THREE_Q_PRICE = 80;
-    private final int TWO_V_PRICE = 90;
-    private final int THREE_V_PRICE = 130;
 
 
     public CheckoutSolution() {
-        INDIVIDUAL_PRICES.put("A", 50);
-        INDIVIDUAL_PRICES.put("B", 30);
-        INDIVIDUAL_PRICES.put("C", 20);
-        INDIVIDUAL_PRICES.put("D", 15);
-        INDIVIDUAL_PRICES.put("E", 40);
-        INDIVIDUAL_PRICES.put("F", 10);
-        INDIVIDUAL_PRICES.put("G", 20);
-        INDIVIDUAL_PRICES.put("H", 10);
-        INDIVIDUAL_PRICES.put("I", 35);
-        INDIVIDUAL_PRICES.put("J", 60);
-        INDIVIDUAL_PRICES.put("K", 80);
-        INDIVIDUAL_PRICES.put("L", 90);
-        INDIVIDUAL_PRICES.put("M", 15);
-        INDIVIDUAL_PRICES.put("N", 40);
-        INDIVIDUAL_PRICES.put("O", 10);
-        INDIVIDUAL_PRICES.put("P", 50);
-        INDIVIDUAL_PRICES.put("Q", 30);
-        INDIVIDUAL_PRICES.put("R", 50);
-        INDIVIDUAL_PRICES.put("S", 30);
-        INDIVIDUAL_PRICES.put("T", 20);
-        INDIVIDUAL_PRICES.put("U", 40);
-        INDIVIDUAL_PRICES.put("V", 50);
-        INDIVIDUAL_PRICES.put("W", 20);
-        INDIVIDUAL_PRICES.put("X", 90);
-        INDIVIDUAL_PRICES.put("Y", 10);
-        INDIVIDUAL_PRICES.put("Z", 50);
+        Map<Integer, Integer> numPrice = new TreeMap<>();
+        numPrice.put(1, 50);
+        numPrice.put(3, 130);
+        numPrice.put(5, 200);
+        PRICES.put("A", numPrice);
+
+        numPrice = new TreeMap<>();
+        numPrice.put(1, 30);
+        numPrice.put(2, 45);
+        PRICES.put("B", numPrice);
+
+        numPrice = new TreeMap<>();
+        numPrice.put(1, 20);
+        PRICES.put("C", numPrice);
+
+        numPrice = new TreeMap<>();
+        numPrice.put(1, 15);
+        PRICES.put("D", numPrice);
+
+        Map<Integer, Object> mixPrice = new TreeMap<>();
+        mixPrice.put(1, 40);
+        mixPrice.put(2, "B");
+        PRICES.put("E", mixPrice);
+
+        mixPrice = new TreeMap<>();
+        mixPrice.put(1, 10);
+        mixPrice.put(3, "F");
+        PRICES.put("F", mixPrice);
+
+        numPrice = new TreeMap<>();
+        numPrice.put(1, 20);
+        PRICES.put("G", numPrice);
+
+        numPrice = new TreeMap<>();
+        numPrice.put(1, 10);
+        numPrice.put(5, 45);
+        numPrice.put(10, 80);
+        PRICES.put("H", numPrice);
+
+        numPrice = new TreeMap<>();
+        numPrice.put(1, 35);
+        PRICES.put("I", numPrice);
+
+        numPrice = new TreeMap<>();
+        numPrice.put(1, 60);
+        PRICES.put("J", numPrice);
+
+        numPrice = new TreeMap<>();
+        numPrice.put(1, 80);
+        numPrice.put(2, 150);
+        PRICES.put("K", numPrice);
+
+        numPrice = new TreeMap<>();
+        numPrice.put(1, 90);
+        PRICES.put("L", numPrice);
+
+        numPrice = new TreeMap<>();
+        numPrice.put(1, 15);
+        PRICES.put("M", numPrice);
+
+        mixPrice = new TreeMap<>();
+        mixPrice.put(1, 40);
+        mixPrice.put(3, "M");
+        PRICES.put("N", mixPrice);
+
+        numPrice = new TreeMap<>();
+        numPrice.put(1, 10);
+        PRICES.put("O", numPrice);
+
+        numPrice = new TreeMap<>();
+        numPrice.put(1, 50);
+        numPrice.put(5, 200);
+        PRICES.put("P", numPrice);
+
+        numPrice = new TreeMap<>();
+        numPrice.put(1, 30);
+        numPrice.put(3, 80);
+        PRICES.put("Q", numPrice);
+
+        mixPrice = new TreeMap<>();
+        mixPrice.put(1, 50);
+        mixPrice.put(3, "Q");
+        PRICES.put("R", mixPrice);
+
+        numPrice = new TreeMap<>();
+        numPrice.put(1, 30);
+        PRICES.put("S", numPrice);
+
+        numPrice = new TreeMap<>();
+        numPrice.put(1, 20);
+        PRICES.put("T", numPrice);
+
+        mixPrice = new TreeMap<>();
+        mixPrice.put(1, 40);
+        mixPrice.put(4, "U");
+        PRICES.put("U", mixPrice);
+
+        numPrice = new TreeMap<>();
+        numPrice.put(1, 50);
+        numPrice.put(2, 90);
+        numPrice.put(3, 130);
+        PRICES.put("V", numPrice);
+
+        numPrice = new TreeMap<>();
+        numPrice.put(1, 20);
+        PRICES.put("W", numPrice);
+
+        numPrice = new TreeMap<>();
+        numPrice.put(1, 90);
+        PRICES.put("X", numPrice);
+
+        numPrice = new TreeMap<>();
+        numPrice.put(1, 10);
+        PRICES.put("Y", numPrice);
+
+        numPrice = new TreeMap<>();
+        numPrice.put(1, 50);
+        PRICES.put("Z", numPrice);
 
         counters.put("A", 0);
         counters.put("B", 0);
@@ -80,93 +162,41 @@ public class CheckoutSolution {
 
         for (int i = 0; i < skus.length(); i++) {
             String sku = String.valueOf(skus.charAt(i));
-            Integer counter = counters.get(sku);
-            if (counter != null)
-                counters.put(sku, counter + 1);
-            else
+            if (PRICES.containsKey(sku)) {
+                int quantity =  counters.get(sku);
+                counters.put(sku, ++quantity);
+
+                TreeMap<Integer, ?> priceMap = (TreeMap<Integer, ?>) PRICES.get(sku);
+                Object priceObj = priceMap.get(priceMap.lastKey());
+                if (priceObj instanceof String && quantity >= priceMap.lastKey()) {
+                    int discountedQuantity = quantity / priceMap.lastKey();
+                    String discountedSku = (String) priceObj;
+                    counters.put(discountedSku, counters.get(discountedSku) - discountedQuantity);
+                }
+            } else {
                 return -1;
+            }
         }
 
-        total += AAAAA_PRICE * (counters.get("A") / 5);
-        counters.put("A", counters.get("A") % 5);
-        total += AAA_PRICE * (counters.get("A") / 3);
-        total += INDIVIDUAL_PRICES.get("A") * (counters.get("A") % 3);
+        for (Map.Entry<String, Integer> skuQuantity: counters.entrySet()) {
+            String sku = skuQuantity.getKey();
+            int quantity = skuQuantity.getValue();
 
-        counters.put("B", counters.get("B") - (counters.get("E") / 2));
-        if (counters.get("B") > 0) {
-            total += BB_PRICE * (counters.get("B") / 2);
-            total += INDIVIDUAL_PRICES.get("B") * (counters.get("B") % 2);
+            TreeMap<Integer, ?> priceMap = (TreeMap<Integer, ?>) PRICES.get(sku);
+            for (Map.Entry<Integer, ?> map: priceMap.descendingMap().entrySet()) {
+                int multiBuyQuantity = map.getKey();
+                Object priceObj = map.getValue();
+                if (priceObj instanceof Integer && quantity >= multiBuyQuantity) {
+                    int multiBuyPrice = (Integer) priceObj;
+                    int multiBuyLots = quantity / multiBuyQuantity;
+                    total += multiBuyLots * multiBuyPrice;
+                    quantity = quantity & multiBuyQuantity;
+                }
+            }
         }
 
-        counters.put("F", counters.get("F") - (counters.get("F") / 3));
-        counters.put("M", counters.get("M") - (counters.get("N") / 3));
-
-        total += INDIVIDUAL_PRICES.get("C") * counters.get("C");
-
-        total += INDIVIDUAL_PRICES.get("D") * counters.get("D");
-
-        total += INDIVIDUAL_PRICES.get("E") * counters.get("E");
-
-        total += INDIVIDUAL_PRICES.get("F") * counters.get("F");
-
-        total += INDIVIDUAL_PRICES.get("G") * counters.get("G");
-
-        total += TEN_H_PRICE * (counters.get("H") / 10);
-        counters.put("H", counters.get("H") % 10);
-        total += FIVE_H_PRICE * (counters.get("H") / 5);
-        total += INDIVIDUAL_PRICES.get("H") * (counters.get("H") % 5);
-
-        total += INDIVIDUAL_PRICES.get("I") * counters.get("I");
-
-        total += INDIVIDUAL_PRICES.get("J") * counters.get("J");
-
-        total += TWO_K_PRICE * (counters.get("K") / 2);
-        total += INDIVIDUAL_PRICES.get("K") * (counters.get("K") % 2);
-
-        total += INDIVIDUAL_PRICES.get("L") * counters.get("L");
-
-        total += counters.get("M") > 0
-                ? INDIVIDUAL_PRICES.get("M") * counters.get("M")
-                : 0;
-
-        total += INDIVIDUAL_PRICES.get("N") * counters.get("N");
-
-        total += INDIVIDUAL_PRICES.get("O") * counters.get("O");
-
-        total += FIVE_P_PRICE * (counters.get("P") / 5);
-        total += INDIVIDUAL_PRICES.get("P") * (counters.get("P") % 5);
-
-        counters.put("Q", counters.get("Q") - (counters.get("R") / 3));
-
-        if (counters.get("Q") > 0) {
-            total += THREE_Q_PRICE * (counters.get("Q") / 3);
-            total += INDIVIDUAL_PRICES.get("Q") * (counters.get("Q") % 3);
-
-        }
-
-        total += INDIVIDUAL_PRICES.get("R") * counters.get("R");
-
-        total += INDIVIDUAL_PRICES.get("S") * counters.get("S");
-
-        total += INDIVIDUAL_PRICES.get("T") * counters.get("T");
-
-        counters.put("U", counters.get("U") - (counters.get("U") / 4));
-
-        total += INDIVIDUAL_PRICES.get("U") * counters.get("U");
-
-        total += THREE_V_PRICE * (counters.get("V") / 3);
-        counters.put("V", counters.get("V") % 3);
-        total += TWO_V_PRICE * (counters.get("V") / 2);
-        total += INDIVIDUAL_PRICES.get("V") * (counters.get("V") % 2);
-
-        total += INDIVIDUAL_PRICES.get("W") * counters.get("W");
-
-        total += INDIVIDUAL_PRICES.get("X") * counters.get("X");
-
-        total += INDIVIDUAL_PRICES.get("Y") * counters.get("Y");
-
-        total += INDIVIDUAL_PRICES.get("Z") * counters.get("Z");
 
         return total;
     }
 }
+
