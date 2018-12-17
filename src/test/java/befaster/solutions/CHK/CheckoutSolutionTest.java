@@ -71,6 +71,3 @@ public class CheckoutSolutionTest {
                 + 10 + 200 + 80 + 50*3 + 50 + 30 + 20 + 40*3 + 90 + 20 + 90 + 10 + 50));
     }
 }
-
-
-
