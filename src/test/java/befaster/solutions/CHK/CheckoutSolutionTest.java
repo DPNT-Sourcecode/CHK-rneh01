@@ -77,8 +77,14 @@ public class CheckoutSolutionTest {
     }
 
     @Test
-    public void testCheckout_withBB() {
-        assertThat(checkoutSolution.checkout("BB"), equalTo(45));
+    public void testCheckout_withC() {
+        assertThat(checkoutSolution.checkout("C"), equalTo(20));
+    }
+
+    @Test
+    public void testCheckout_withD() {
+        assertThat(checkoutSolution.checkout("D"), equalTo(15));
     }
 }
+
 
