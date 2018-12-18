@@ -6,8 +6,6 @@ import java.util.TreeMap;
 
 public class CheckoutSolution {
     private final Map<String, Map<Integer, ?>> PRICES = new TreeMap<>();
-    private final Map<String, Integer> counters = new HashMap<>();
-
 
     public CheckoutSolution() {
         Map<Integer, Integer> numPrice = new TreeMap<>();
@@ -131,6 +129,7 @@ public class CheckoutSolution {
     }
 
     public Integer checkout(String skus) {
+        final Map<String, Integer> counters = new HashMap<>();
 
         for (int i = 0; i < skus.length(); i++) {
             String sku = String.valueOf(skus.charAt(i));
@@ -142,12 +141,12 @@ public class CheckoutSolution {
             }
         }
 
-        applyItemReductionOffers();
+        applyItemReductionOffers(counters);
 
-        return calculateTotal();
+        return calculateTotal(counters);
     }
 
-    private Integer calculateTotal() {
+    private Integer calculateTotal(Map<String, Integer> counters) {
         int total = 0;
         for (Map.Entry<String, Integer> skuQuantity: counters.entrySet()) {
             String sku = skuQuantity.getKey();
@@ -168,7 +167,7 @@ public class CheckoutSolution {
         return total;
     }
 
-    private void applyItemReductionOffers() {
+    private void applyItemReductionOffers(Map<String, Integer> counters) {
         for (Map.Entry<String, Integer> skuQuantity : counters.entrySet()) {
             String sku = skuQuantity.getKey();
             int quantity = skuQuantity.getValue();
@@ -186,3 +185,4 @@ public class CheckoutSolution {
         }
     }
 }
+
