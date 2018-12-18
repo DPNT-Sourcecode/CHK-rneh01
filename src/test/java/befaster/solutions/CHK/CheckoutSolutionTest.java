@@ -68,9 +68,14 @@ public class CheckoutSolutionTest {
         assertThat(checkoutSolution.checkout("AAAABBAAAAACDDEGHHHHHIJKLMNNNOPPPPPQQQQRRRRSTUUUUVVWXYZ"),
                 equalTo(130 + 50 + 45 + 200 + 20 + 15 + 15 + 40
                 + 20 + 45 + 35 + 60 + 80 + 90 + 40*3
-                + 10 + 200 + 80 + 50*3 + 50 + 30 + 20 + 40*3 + 90 + 20 + 90 + 10 + 50));
+                + 10 + 200 + 80 + 50*3 + 50 + 40*3 + 90 + 45 + 17 + 20 + 20));
     }
 
+    @Test
+    public void testCheckout_withSpecialOffer() {
+        assertThat(checkoutSolution.checkout("STWXYZ"),
+                equalTo(45 + 17 + 20 + 20));
+    }
 
     @Test
     public void testSpecialOffer() {
@@ -78,4 +83,5 @@ public class CheckoutSolutionTest {
                 equalTo(45*3 + 17 + 20));
     }
 }
+
 
