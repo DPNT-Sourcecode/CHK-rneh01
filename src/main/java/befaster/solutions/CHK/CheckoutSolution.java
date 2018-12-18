@@ -176,6 +176,16 @@ public class CheckoutSolution {
             }
         }
 
+        total = applySpecialOffer(total, counters, specialOfferQualifiedSkuQuantity);
+
+        return total;
+    }
+
+    private int applySpecialOffer(
+            int total,
+            Map<String, Integer> counters,
+            int specialOfferQualifiedSkuQuantity
+    ) {
         total += (specialOfferQualifiedSkuQuantity / SPECIAL_OFFER_LOT_SIZE) * SPECIAL_OFFER_LOT_PRICE;
         int remainingQualifiedSkuQuantity = specialOfferQualifiedSkuQuantity % SPECIAL_OFFER_LOT_SIZE;
         int lastIndex = 0;
@@ -218,3 +228,4 @@ public class CheckoutSolution {
         }
     }
 }
+
