@@ -1,11 +1,12 @@
 package befaster.solutions.CHK;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 public class CheckoutSolution {
     private final Map<String, Map<Integer, ?>> PRICES = new TreeMap<>();
+    private final Integer SPECIAL_OFFER_LOT_SIZE = 3;
+    private final Integer SPECIAL_OFFER_LOT_PRICE = 45;
+    private final List<String> SPECIAL_OFFER_QUALIFIED_SKUS = new ArrayList();
 
     public CheckoutSolution() {
         Map<Integer, Integer> numPrice = new TreeMap<>();
@@ -93,7 +94,7 @@ public class CheckoutSolution {
         PRICES.put("R", mixPrice);
 
         numPrice = new TreeMap<>();
-        numPrice.put(1, 30);
+        numPrice.put(1, 20);
         PRICES.put("S", numPrice);
 
         numPrice = new TreeMap<>();
@@ -116,16 +117,22 @@ public class CheckoutSolution {
         PRICES.put("W", numPrice);
 
         numPrice = new TreeMap<>();
-        numPrice.put(1, 90);
+        numPrice.put(1, 17);
         PRICES.put("X", numPrice);
 
         numPrice = new TreeMap<>();
-        numPrice.put(1, 10);
+        numPrice.put(1, 20);
         PRICES.put("Y", numPrice);
 
         numPrice = new TreeMap<>();
-        numPrice.put(1, 50);
+        numPrice.put(1, 21);
         PRICES.put("Z", numPrice);
+
+        SPECIAL_OFFER_QUALIFIED_SKUS.add("X");
+        SPECIAL_OFFER_QUALIFIED_SKUS.add("S");
+        SPECIAL_OFFER_QUALIFIED_SKUS.add("T");
+        SPECIAL_OFFER_QUALIFIED_SKUS.add("Y");
+        SPECIAL_OFFER_QUALIFIED_SKUS.add("Z");
     }
 
     public Integer checkout(String skus) {
@@ -148,21 +155,47 @@ public class CheckoutSolution {
 
     private Integer calculateTotal(Map<String, Integer> counters) {
         int total = 0;
+        int specialOfferQualifiedSkuQuantity = 0;
+
         for (Map.Entry<String, Integer> skuQuantity: counters.entrySet()) {
             String sku = skuQuantity.getKey();
             int quantity = skuQuantity.getValue();
 
             TreeMap<Integer, ?> priceMap = (TreeMap<Integer, ?>) PRICES.get(sku);
-            for (Map.Entry<Integer, ?> map : priceMap.descendingMap().entrySet()) {
-                int multiBuyQuantity = map.getKey();
-                Object priceObj = map.getValue();
-                if (priceObj instanceof Integer && quantity >= multiBuyQuantity) {
-                    total += quantity / multiBuyQuantity * (Integer) priceObj;
-                    quantity = quantity % multiBuyQuantity;
+            if (SPECIAL_OFFER_QUALIFIED_SKUS.contains(sku)) {
+                specialOfferQualifiedSkuQuantity += quantity;
+            } else {
+                for (Map.Entry<Integer, ?> map : priceMap.descendingMap().entrySet()) {
+                    int multiBuyQuantity = map.getKey();
+                    Object priceObj = map.getValue();
+                    if (priceObj instanceof Integer && quantity >= multiBuyQuantity) {
+                        total += quantity / multiBuyQuantity * (Integer) priceObj;
+                        quantity = quantity % multiBuyQuantity;
+                    }
                 }
             }
         }
 
+        total += (specialOfferQualifiedSkuQuantity / SPECIAL_OFFER_LOT_SIZE) * SPECIAL_OFFER_LOT_PRICE;
+        int remainingQualifiedSkuQuantity = specialOfferQualifiedSkuQuantity % SPECIAL_OFFER_LOT_SIZE;
+        int lastIndex = 0;
+        while (remainingQualifiedSkuQuantity > 0) {
+            String sku = SPECIAL_OFFER_QUALIFIED_SKUS.get(lastIndex);
+            int quantity = counters.getOrDefault(sku, 0);
+            Object priceObj = PRICES.get(sku).get(1);
+
+            if (!(priceObj instanceof Integer))
+                return -1;
+
+            if (remainingQualifiedSkuQuantity > quantity) {
+                total += quantity * (Integer)priceObj;
+                remainingQualifiedSkuQuantity -= quantity;
+                lastIndex++;
+            } else {
+                total += remainingQualifiedSkuQuantity * (Integer)priceObj;
+                remainingQualifiedSkuQuantity = 0;
+            }
+        }
 
         return total;
     }
@@ -185,3 +218,4 @@ public class CheckoutSolution {
         }
     }
 }
+

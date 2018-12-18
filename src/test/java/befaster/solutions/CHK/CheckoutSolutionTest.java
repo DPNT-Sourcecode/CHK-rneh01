@@ -74,8 +74,9 @@ public class CheckoutSolutionTest {
 
     @Test
     public void testSpecialOffer() {
-        assertThat(checkoutSolution.checkout("SSSTTXYYZZZZ"),
+        assertThat(checkoutSolution.checkout("SSSTTXYYZZZ"),
                 equalTo(45*3 + 17 + 20));
     }
 }
+
 
