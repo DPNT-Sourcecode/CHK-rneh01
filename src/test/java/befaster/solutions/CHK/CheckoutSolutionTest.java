@@ -59,8 +59,8 @@ public class CheckoutSolutionTest {
 
     @Test
     public void testCheckout_betweenSkusOandZ() {
-        assertThat(checkoutSolution.checkout("OPPPPPQQQQRRRRUUUUVV"),
-                equalTo(10 + 200 + 80 + 50*3 + 50 + 40*3 + 90));
+        assertThat(checkoutSolution.checkout("OPPPPPQQQQRRRRUUUUVVTTSSSYXZYW"),
+                equalTo(10 + 200 + 80 + 50*3 + 50 + 40*3 + 90 + 45 + 45 + 45 + 20));
     }
 
     @Test
@@ -83,5 +83,6 @@ public class CheckoutSolutionTest {
                 equalTo(45*3 + 17 + 20));
     }
 }
+
 
 
