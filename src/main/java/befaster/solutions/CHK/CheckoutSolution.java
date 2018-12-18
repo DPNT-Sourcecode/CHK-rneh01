@@ -57,8 +57,8 @@ public class CheckoutSolution {
         PRICES.put("J", numPrice);
 
         numPrice = new TreeMap<>();
-        numPrice.put(1, 80);
-        numPrice.put(2, 150);
+        numPrice.put(1, 70);
+        numPrice.put(2, 120);
         PRICES.put("K", numPrice);
 
         numPrice = new TreeMap<>();
@@ -228,4 +228,5 @@ public class CheckoutSolution {
         }
     }
 }
+
 
