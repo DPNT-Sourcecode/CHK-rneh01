@@ -71,18 +71,11 @@ public class CheckoutSolutionTest {
                 + 10 + 200 + 80 + 50*3 + 50 + 30 + 20 + 40*3 + 90 + 20 + 90 + 10 + 50));
     }
 
-    @Test
-    public void testCheckout_withB() {
-        assertThat(checkoutSolution.checkout("B"), equalTo(30));
-    }
 
     @Test
-    public void testCheckout_withC() {
-        assertThat(checkoutSolution.checkout("C"), equalTo(20));
-    }
-
-    @Test
-    public void testCheckout_withD() {
-        assertThat(checkoutSolution.checkout("D"), equalTo(15));
+    public void testSpecialOffer() {
+        assertThat(checkoutSolution.checkout("SSSTTXYYZZZZ"),
+                equalTo(45*3 + 17 + 20));
     }
 }
+
